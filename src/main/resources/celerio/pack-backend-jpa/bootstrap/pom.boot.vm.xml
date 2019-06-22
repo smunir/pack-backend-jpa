@@ -7,6 +7,14 @@ $output.file("pom.xml")##
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>$configuration.applicationName</name>
+    
+    <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.0.M3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+    
     <properties>
         <!-- ~~~~~~~~ -->
         <!-- Database -->
@@ -66,9 +74,6 @@ $output.file("pom.xml")##
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <celerio-maven-plugin.outputDir>${dollar}{project.basedir}</celerio-maven-plugin.outputDir>
         <celerio-maven-plugin.version>$generation.version</celerio-maven-plugin.version>
-        <hibernate.version>5.0.2.Final</hibernate.version>
-        <spring.version>4.2.2.RELEASE</spring.version>
-        <spring-security.version>4.0.2.RELEASE</spring-security.version>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- Variables substituted in resources file at build time -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -243,7 +248,31 @@ $output.file("pom.xml")##
     <!-- ~~~~~~~~~~~~ -->
     <!-- DEPENDENCIES -->
     <!-- ~~~~~~~~~~~~ -->
-    <dependencies>
+  <dependencies>
+    	<!-- ~~~~~~ -->
+        <!-- SPRING -->
+        <!-- ~~~~~~ -->
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-test</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- List your specific dependencies below -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -260,98 +289,22 @@ $output.file("pom.xml")##
         <dependency>
             <groupId>com.jaxio</groupId>
             <artifactId>jpa-querybyexample</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${dollar}{hibernate.version}</version>
+            <version>1.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <version>${dollar}{hibernate.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${dollar}{hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-java8</artifactId>
-            <version>${dollar}{hibernate.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.1</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-            <version>8.0.28</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-juli</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>${dollar}{jdbc.groupId}</groupId>
-            <artifactId>${dollar}{jdbc.artifactId}</artifactId>
-            <version>${dollar}{jdbc.version}</version>
-        </dependency>
         <!-- ~~~~~~~~~~~~~~~~ -->
         <!-- HIBERNATE SEARCH -->
         <!-- ~~~~~~~~~~~~~~~~ -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-orm</artifactId>
-            <version>5.5.0.Final</version>
-            </dependency>
-        <dependency>
-            <groupId>org.apache.solr</groupId>
-            <artifactId>solr-common</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.solr</groupId>
-            <artifactId>solr-core</artifactId>
-            <version>5.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers</artifactId>
-            <version>1.11</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
-        </dependency>
-        <!-- ~~~~~~~~~~ -->
-        <!-- VALIDATION -->
-        <!-- ~~~~~~~~~~ -->
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -368,159 +321,19 @@ $output.file("pom.xml")##
             <artifactId>javax.el</artifactId>
             <version>2.2.4</version>
         </dependency>
-        <dependency> <!-- validation html -->
+        <!-- validation html -->
+        <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
-        </dependency>
-        <!-- ~~~~~~ -->
-        <!-- LOGGER -->
-        <!-- ~~~~~~ -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.3</version>
         </dependency>
         <!-- ~~~~~ -->
         <!-- UTILS -->
         <!-- ~~~~~ -->
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>18.0</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
-        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version>
-        </dependency>
-        <!-- ~~~~~~ -->
-        <!-- SPRING -->
-        <!-- ~~~~~~ -->
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${dollar}{spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>${dollar}{spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${dollar}{spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${dollar}{spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${dollar}{spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${dollar}{spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.8.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.8.7</version>
-        </dependency>
-        <!-- ~~~~~~~~~~~~~~~ -->
-        <!-- SPRING SECURITY -->
-        <!-- ~~~~~~~~~~~~~~~ -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>jsr250-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${dollar}{spring-security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${dollar}{spring-security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-acl</artifactId>
-            <version>${dollar}{spring-security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${dollar}{spring-security.version}</version>
         </dependency>
         <!-- ~~~~~~~~~~ -->
         <!-- MONITORING -->
@@ -534,12 +347,6 @@ $output.file("pom.xml")##
         <!-- TEST -->
         <!-- ~~~~ -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
@@ -551,13 +358,8 @@ $output.file("pom.xml")##
             <version>1.4</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${dollar}{spring.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+    
     <!-- ~~~~~~~~~~~~ -->
     <!-- REPOSITORIES -->
     <!-- ~~~~~~~~~~~~ -->
@@ -571,6 +373,19 @@ $output.file("pom.xml")##
         </pluginRepository>
     </pluginRepositories>
     <repositories>
+    	<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
         <repository>
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
@@ -627,7 +442,6 @@ $output.file("pom.xml")##
                 <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -641,7 +455,6 @@ $output.file("pom.xml")##
                 <!-- http://mojo.codehaus.org/build-helper-maven-plugin/ -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
                 <executions>
 #if($config.requiresJavaBuildHelper($JAVA))
                     <execution>
@@ -717,19 +530,16 @@ $output.file("pom.xml")##
                 <!-- http://maven.apache.org/plugins/maven-install-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
             </plugin>
             <plugin>
                 <!-- http://maven.apache.org/plugins/maven-clean-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.6.1</version>
             </plugin>
             <plugin>
                 <!-- http://maven.apache.org/plugins/maven-surefire-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
                 <configuration>
                     <!-- surefire uses a new jvm, MAVEN_OPTS are ignored, so you better set the memory options here -->
                     <argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
@@ -739,7 +549,6 @@ $output.file("pom.xml")##
                 <!-- http://maven.apache.org/plugins/maven-failsafe-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
                 <executions>
                     <execution>
                         <id>integration-test</id>
@@ -767,4 +576,13 @@ $output.file("pom.xml")##
             </plugin>
         </plugins>
     </build>
+    <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+    			<groupId>org.springframework</groupId>
+    			<artifactId>spring-core</artifactId>
+    			<version>5.2.0.M2</version>
+    		</dependency>
+    	</dependencies>
+    </dependencyManagement>
 </project>

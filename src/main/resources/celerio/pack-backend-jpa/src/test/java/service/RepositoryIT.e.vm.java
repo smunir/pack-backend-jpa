@@ -28,20 +28,21 @@ $output.requireStatic("com.google.common.collect.Sets.newHashSet")##
 $output.requireStatic("org.fest.assertions.Assertions.assertThat")##
 $output.require("org.junit.Test")##
 $output.require("org.junit.runner.RunWith")##
+$output.require("org.junit.runner.RunWith")##
+$output.require("org.springframework.boot.test.context.SpringBootTest")##
+$output.require("org.springframework.context.annotation.ComponentScan")##
 $output.require("org.springframework.test.annotation.Rollback")##
-$output.require("org.springframework.test.context.ContextConfiguration")##
-$output.require("org.springframework.test.context.junit4.SpringJUnit4ClassRunner")##
+$output.require("org.springframework.test.context.junit4.SpringRunner")##
 $output.require("org.springframework.transaction.annotation.Transactional")##
 $output.require($entity.model)##
 $output.require($entity.modelGenerator)##
 $output.require($entity.repository)##
-
 /**
  * Integration test on ${entity.repository.type}
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:spring/applicationContext-test.xml" })
-@Transactional
+@SpringBootTest(classes=${output.currentClass}.class)
+@RunWith(SpringRunner.class)
+@ComponentScan(value = {"${configuration.rootPackage}", "com.jaxio.jpa.querybyexample"})
 public class $output.currentClass {
     @SuppressWarnings("unused")
     private static final Logger log = LoggerFactory.getLogger(${output.currentClass}.class);
@@ -57,6 +58,7 @@ public class $output.currentClass {
 
     @Test
     @Rollback
+    @Transactional
     public void saveAndGet() {
         $entity.model.type $entity.model.var = ${entity.modelGenerator.var}.${entity.model.getter}();
 #if ($entity.root.hasSimplePk() && $entity.root.primaryKey.attribute.isDate())
@@ -104,6 +106,7 @@ $output.requireStatic("org.junit.Assert.fail")##
 $output.requireMetamodel($entity.model)##
     @Test
     @Rollback
+    @Transactional
     public void saveAndGetWithPropertySelector() {
         $entity.model.type $entity.model.var = ${entity.modelGenerator.var}.${entity.model.getter}();
 #if ($entity.root.hasSimplePk() && $entity.root.primaryKey.attribute.isDate())
@@ -154,6 +157,7 @@ $output.requireMetamodel($entity.model)##
 $output.require("java.util.List")##
     @Test
     @Rollback
+    @Transactional
     public void saveAndGetWithExplicitNullPropertySelector() {
         $entity.model.type $entity.model.var = ${entity.modelGenerator.var}.${entity.model.getter}();
 #if ($entity.root.hasSimplePk() && $entity.root.primaryKey.attribute.isDate())

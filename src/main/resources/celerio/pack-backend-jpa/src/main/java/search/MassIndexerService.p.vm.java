@@ -68,6 +68,8 @@ public class $output.currentClass {
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		try {
+			entityManager=entityManager.getEntityManagerFactory().createEntityManager();
+        	//Session session = (Session) entityManager.unwrap(Session.class);
             getFullTextEntityManager(entityManager) //
 					.createIndexer(classToBeIndexed) //
                     .batchSizeToLoadObjects(batchSizeToLoadObjects) //

@@ -1,3 +1,4 @@
+
 ## Copyright 2015 JAXIO http://www.jaxio.com
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,24 +15,27 @@
 ##
 $output.java($Configuration, "JpaConfiguration")##
 
-$output.require("javax.annotation.Resource")##
-$output.require("java.util.Properties")##
 $output.require("javax.sql.DataSource")##
+$output.require("javax.annotation.Resource")##
+
 $output.require("org.hibernate.SessionFactory")##
 $output.require("org.hibernate.jpa.HibernateEntityManagerFactory")##
-$output.require("org.springframework.beans.factory.annotation.Value")##
+
 $output.require("org.springframework.context.annotation.Bean")##
 $output.require("org.springframework.context.annotation.Configuration")##
 $output.require("org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor")##
+$output.require("org.springframework.jdbc.datasource.embedded.EmbeddedDatabase")##
+$output.require("org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder")##
+$output.require("org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType")##
 $output.require("org.springframework.orm.jpa.JpaTransactionManager")##
 $output.require("org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean")##
 $output.require("org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter")##
+$output.require("org.springframework.transaction.annotation.EnableTransactionManagement")##
+
 
 @Configuration
+@EnableTransactionManagement
 public class $output.currentClass {
-
-    @Value("classpath:hibernate.properties")
-    private Properties jpaProperties;
 
     @Resource(name = "dataSource")
     private DataSource dataSource;
@@ -63,7 +67,7 @@ public class $output.currentClass {
         emf.setPersistenceXmlLocation("classpath:META-INF/spring-persistence.xml");
         emf.setPersistenceUnitName("${configuration.applicationName}PU");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        emf.setJpaProperties(jpaProperties);
+        //emf.setJpaProperties(jpaProperties);
         return emf;
     }
 
