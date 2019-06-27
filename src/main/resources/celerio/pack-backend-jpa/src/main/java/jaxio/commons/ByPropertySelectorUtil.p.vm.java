@@ -10,8 +10,8 @@ $output.require("javax.persistence.criteria.Root")##
 $output.require("java.io.Serializable")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static org.apache.commons.collections.CollectionUtils.isNotEmpty")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("org.apache.commons.collections.CollectionUtils.isNotEmpty")##
 
 /**
  * Helper to create a predicate out of {@link PropertySelector}s.

@@ -15,8 +15,8 @@ $output.require("javax.persistence.metamodel.SingularAttribute")##
 $output.require("java.io.Serializable")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static java.util.Collections.emptyList")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("java.util.Collections.emptyList")##
 
 /**
  * @author Nicolas Romanetti

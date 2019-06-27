@@ -6,8 +6,8 @@ $output.require("javax.persistence.metamodel.Attribute")##
 $output.require("java.io.Serializable")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.base.Preconditions.checkNotNull")##
-$output.require("static com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("com.google.common.base.Preconditions.checkNotNull")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
 
 /**
  * Used to construct OR predicate for a property value. In other words you can search

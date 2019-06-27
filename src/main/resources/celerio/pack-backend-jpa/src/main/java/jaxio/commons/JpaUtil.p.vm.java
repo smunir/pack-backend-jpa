@@ -20,15 +20,15 @@ $output.require("java.lang.reflect.Method")##
 $output.require("java.util.List")##
 $output.require("java.util.Map")##
 
-$output.require("static com.google.common.base.Predicates.notNull")##
-$output.require("static com.google.common.base.Throwables.propagate")##
-$output.require("static com.google.common.collect.Iterables.filter")##
-$output.require("static com.google.common.collect.Iterables.toArray")##
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static com.google.common.collect.Maps.newHashMap")##
-$output.require("static java.lang.reflect.Modifier.isPublic")##
-$output.require("static org.apache.commons.lang3.StringUtils.isBlank")##
-$output.require("static org.hibernate.proxy.HibernateProxyHelper.getClassWithoutInitializingProxy")##
+$output.requireStatic("com.google.common.base.Predicates.notNull")##
+$output.requireStatic("com.google.common.base.Throwables.propagate")##
+$output.requireStatic("com.google.common.collect.Iterables.filter")##
+$output.requireStatic("com.google.common.collect.Iterables.toArray")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("com.google.common.collect.Maps.newHashMap")##
+$output.requireStatic("java.lang.reflect.Modifier.isPublic")##
+$output.requireStatic("org.apache.commons.lang3.StringUtils.isBlank")##
+$output.requireStatic("org.hibernate.proxy.HibernateProxyHelper.getClassWithoutInitializingProxy")##
 
 @Named
 @Singleton

@@ -5,8 +5,8 @@ $output.require("java.io.Serializable")##
 $output.require("java.util.Arrays")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static org.apache.commons.lang3.StringUtils.isNotBlank")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("org.apache.commons.lang3.StringUtils.isNotBlank")##
 
 public class $output.currentClass implements Serializable {
     private static final long serialVersionUID = 1L;

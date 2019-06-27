@@ -13,9 +13,9 @@ $output.require("javax.persistence.metamodel.EntityType")##
 $output.require("javax.persistence.metamodel.SingularAttribute")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static javax.persistence.metamodel.Attribute.PersistentAttributeType.MANY_TO_ONE")##
-$output.require("static javax.persistence.metamodel.Attribute.PersistentAttributeType.ONE_TO_ONE")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("javax.persistence.metamodel.Attribute.PersistentAttributeType.MANY_TO_ONE")##
+$output.requireStatic("javax.persistence.metamodel.Attribute.PersistentAttributeType.ONE_TO_ONE")##
 
 @Named
 @Singleton

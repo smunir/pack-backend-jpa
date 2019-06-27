@@ -9,7 +9,7 @@ $output.require("javax.persistence.criteria.Path")##
 $output.require("javax.persistence.criteria.Root")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
 
 /**
  * Helper to create list of {@link javax.persistence.criteria.Order} out of {@link OrderBy}s.

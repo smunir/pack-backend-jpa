@@ -100,7 +100,7 @@ $output.require("org.springframework.core.serializer.DefaultDeserializer")##
 $output.require("org.springframework.core.serializer.DefaultSerializer")##
 $output.require("java.io.ByteArrayInputStream")##
 $output.require("java.io.ByteArrayOutputStream")##
-$output.require("static ${configuration.rootPackage}.jaxio.commons.PropertySelector.newPropertySelector")##
+$output.requireStatic("${configuration.rootPackage}.jaxio.commons.PropertySelector.newPropertySelector")##
 $output.requireStatic("org.junit.Assert.fail")##
 $output.requireMetamodel($entity.model)##
     @Test

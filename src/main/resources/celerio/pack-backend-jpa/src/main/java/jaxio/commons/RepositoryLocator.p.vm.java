@@ -7,8 +7,8 @@ $output.require("java.io.Serializable")##
 $output.require("java.util.List")##
 $output.require("java.util.Map")##
 
-$output.require("static com.google.common.collect.Maps.newHashMap")##
-$output.require("static org.hibernate.proxy.HibernateProxyHelper.getClassWithoutInitializingProxy")##
+$output.requireStatic("com.google.common.collect.Maps.newHashMap")##
+$output.requireStatic("org.hibernate.proxy.HibernateProxyHelper.getClassWithoutInitializingProxy")##
 
 @Named
 @Singleton

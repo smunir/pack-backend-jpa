@@ -10,11 +10,11 @@ $output.require("org.slf4j.LoggerFactory")##
 $output.require("javax.persistence.metamodel.SingularAttribute")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.base.Preconditions.checkArgument")##
-$output.require("static com.google.common.base.Throwables.propagate")##
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static org.apache.commons.lang3.StringUtils.*")##
-$output.require("static org.apache.lucene.queryparser.classic.QueryParser.escape")##
+$output.requireStatic("com.google.common.base.Preconditions.checkArgument")##
+$output.requireStatic("com.google.common.base.Throwables.propagate")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("org.apache.commons.lang3.StringUtils.*")##
+$output.requireStatic("org.apache.lucene.queryparser.classic.QueryParser.escape")##
 
 public class $output.currentClass implements LuceneQueryBuilder {
 

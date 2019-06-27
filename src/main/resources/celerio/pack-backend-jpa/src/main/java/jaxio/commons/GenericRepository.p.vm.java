@@ -17,8 +17,8 @@ $output.require("java.io.Serializable")##
 $output.require("java.lang.reflect.Method")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.base.Preconditions.checkNotNull")##
-$output.require("static com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("com.google.common.base.Preconditions.checkNotNull")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
 
 /**
  * JPA 2 {@link GenericRepository} implementation

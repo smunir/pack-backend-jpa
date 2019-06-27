@@ -14,10 +14,10 @@ $output.require("javax.persistence.metamodel.PluralAttribute")##
 $output.require("javax.persistence.metamodel.SingularAttribute")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static java.util.Collections.emptyList")##
-$output.require("static javax.persistence.metamodel.Attribute.PersistentAttributeType.*")##
-$output.require("static org.apache.commons.lang3.StringUtils.isNotEmpty")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("java.util.Collections.emptyList")##
+$output.requireStatic("javax.persistence.metamodel.Attribute.PersistentAttributeType.*")##
+$output.requireStatic("org.apache.commons.lang3.StringUtils.isNotEmpty")##
 
 /**
  * Helper to create predicate by example. It processes associated entities (1 level deep).

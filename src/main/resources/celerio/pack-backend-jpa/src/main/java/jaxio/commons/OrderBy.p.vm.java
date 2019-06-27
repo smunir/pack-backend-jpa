@@ -6,9 +6,9 @@ $output.require("javax.persistence.metamodel.Attribute")##
 $output.require("java.io.Serializable")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.base.Preconditions.checkNotNull")##
-$output.require("static ${configuration.rootPackage}.jaxio.commons.OrderByDirection.ASC")##
-$output.require("static ${configuration.rootPackage}.jaxio.commons.OrderByDirection.DESC")##
+$output.requireStatic("com.google.common.base.Preconditions.checkNotNull")##
+$output.requireStatic("${configuration.rootPackage}.jaxio.commons.OrderByDirection.ASC")##
+$output.requireStatic("${configuration.rootPackage}.jaxio.commons.OrderByDirection.DESC")##
 
 /**
  * Holder class for search ordering used by the {@link SearchParameters}.

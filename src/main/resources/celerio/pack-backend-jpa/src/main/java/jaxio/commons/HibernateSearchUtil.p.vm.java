@@ -14,8 +14,8 @@ $output.require("javax.persistence.metamodel.SingularAttribute")##
 $output.require("java.io.Serializable")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static org.hibernate.search.jpa.Search.getFullTextEntityManager")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("org.hibernate.search.jpa.Search.getFullTextEntityManager")##
 
 @Named
 @Singleton

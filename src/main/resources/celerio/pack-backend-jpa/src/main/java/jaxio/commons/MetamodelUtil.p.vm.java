@@ -15,8 +15,8 @@ $output.require("java.util.Collection")##
 $output.require("java.util.List")##
 $output.require("java.util.Map")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static com.google.common.collect.Maps.newHashMap")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("com.google.common.collect.Maps.newHashMap")##
 
 @Named
 @Singleton

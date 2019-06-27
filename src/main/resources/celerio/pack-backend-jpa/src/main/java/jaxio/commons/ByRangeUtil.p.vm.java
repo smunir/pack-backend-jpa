@@ -9,9 +9,9 @@ $output.require("javax.persistence.criteria.Predicate")##
 $output.require("javax.persistence.criteria.Root")##
 $output.require("java.util.List")##
 
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static java.lang.Boolean.FALSE")##
-$output.require("static java.lang.Boolean.TRUE")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("java.lang.Boolean.FALSE")##
+$output.requireStatic("java.lang.Boolean.TRUE")##
 
 /**
  * Helper to create a predicate out of {@link Range}s.

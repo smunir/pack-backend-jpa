@@ -10,13 +10,13 @@ $output.require("java.util.List")##
 $output.require("java.util.Map")##
 $output.require("java.util.Set")##
 
-$output.require("static com.google.common.base.Preconditions.checkNotNull")##
-$output.require("static com.google.common.collect.Lists.newArrayList")##
-$output.require("static com.google.common.collect.Lists.transform")##
-$output.require("static com.google.common.collect.Maps.newHashMap")##
-$output.require("static com.google.common.collect.Sets.newHashSet")##
-$output.require("static ${configuration.rootPackage}.jaxio.commons.PropertySelector.newPropertySelector")##
-$output.require("static org.apache.commons.lang3.StringUtils.isNotBlank")##
+$output.requireStatic("com.google.common.base.Preconditions.checkNotNull")##
+$output.requireStatic("com.google.common.collect.Lists.newArrayList")##
+$output.requireStatic("com.google.common.collect.Lists.transform")##
+$output.requireStatic("com.google.common.collect.Maps.newHashMap")##
+$output.requireStatic("com.google.common.collect.Sets.newHashSet")##
+$output.requireStatic("${configuration.rootPackage}.jaxio.commons.PropertySelector.newPropertySelector")##
+$output.requireStatic("org.apache.commons.lang3.StringUtils.isNotBlank")##
 
 /*
  * The SearchParameters is used to pass search parameters to the DAO layer.
