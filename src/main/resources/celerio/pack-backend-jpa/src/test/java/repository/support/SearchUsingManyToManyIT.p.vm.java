@@ -18,7 +18,7 @@ $output.javaTest($RepositorySupport, "SearchUsingManyToManyIT")
 $output.requireStatic("com.google.common.collect.Lists.newArrayList")##
 $output.requireStatic("org.fest.assertions.Assertions.assertThat")##
 $output.require("javax.inject.Inject")##
-$output.require("com.jaxio.jpa.querybyexample.SearchParameters")##
+$output.require("${configuration.rootPackage}.jaxio.commons.SearchParameters")##
 $output.require("org.junit.Test")##
 $output.require("org.junit.runner.RunWith")##
 $output.require("org.springframework.test.context.ContextConfiguration")##

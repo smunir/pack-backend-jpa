@@ -20,7 +20,7 @@ $output.require("java.math.BigInteger")##
 #if ($entity.hasUniqueDateAttribute() || $entity.root.hasDatePk())
 $output.require("java.util.Date")##
 #end
-$output.require("com.jaxio.jpa.querybyexample.GenericRepository")##
+$output.require("${configuration.rootPackage}.jaxio.commons.GenericRepository")##
 $output.require($entity.model)##
 $output.require($entity.root.primaryKey)##
 #foreach ($enumAttribute in $entity.uniqueEnumAttributes.list)

@@ -14,7 +14,7 @@
 ##
 $output.java($enum.model.packageName, "$enum.model.type")##
 
-$output.require("com.jaxio.jpa.querybyexample.LabelizedEnum")##
+$output.require("${configuration.rootPackage}.jaxio.commons.LabelizedEnum")##
 $output.require($Util, "ResourcesUtil")##
 
 $enum.config.getJavadoc()##

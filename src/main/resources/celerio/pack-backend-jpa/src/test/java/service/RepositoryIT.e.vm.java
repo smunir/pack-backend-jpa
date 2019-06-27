@@ -28,7 +28,6 @@ $output.requireStatic("com.google.common.collect.Sets.newHashSet")##
 $output.requireStatic("org.fest.assertions.Assertions.assertThat")##
 $output.require("org.junit.Test")##
 $output.require("org.junit.runner.RunWith")##
-$output.require("org.junit.runner.RunWith")##
 $output.require("org.springframework.boot.test.context.SpringBootTest")##
 $output.require("org.springframework.context.annotation.ComponentScan")##
 $output.require("org.springframework.test.annotation.Rollback")##
@@ -42,7 +41,7 @@ $output.require($entity.repository)##
  */
 @SpringBootTest(classes=${output.currentClass}.class)
 @RunWith(SpringRunner.class)
-@ComponentScan(value = {"${configuration.rootPackage}", "com.jaxio.jpa.querybyexample"})
+@ComponentScan(value = {"${configuration.rootPackage}"})
 public class $output.currentClass {
     @SuppressWarnings("unused")
     private static final Logger log = LoggerFactory.getLogger(${output.currentClass}.class);
@@ -96,12 +95,12 @@ public class $output.currentClass {
 #end
     }
 #if ($entity.root.hasSimplePk() && $entity.useBusinessKey())
-$output.require("com.jaxio.jpa.querybyexample.SearchParameters")##
+$output.require("${configuration.rootPackage}.jaxio.commons.SearchParameters")##
 $output.require("org.springframework.core.serializer.DefaultDeserializer")##
 $output.require("org.springframework.core.serializer.DefaultSerializer")##
 $output.require("java.io.ByteArrayInputStream")##
 $output.require("java.io.ByteArrayOutputStream")##
-$output.requireStatic("com.jaxio.jpa.querybyexample.PropertySelector.newPropertySelector")##
+$output.require("static ${configuration.rootPackage}.jaxio.commons.PropertySelector.newPropertySelector")##
 $output.requireStatic("org.junit.Assert.fail")##
 $output.requireMetamodel($entity.model)##
     @Test
@@ -152,7 +151,7 @@ $output.requireMetamodel($entity.model)##
 #end
 
 #if ($toOneRelation)
-$output.require("com.jaxio.jpa.querybyexample.SearchParameters")##
+$output.require("${configuration.rootPackage}.jaxio.commons.SearchParameters")##
 $output.requireMetamodel($entity.model)##
 $output.require("java.util.List")##
     @Test

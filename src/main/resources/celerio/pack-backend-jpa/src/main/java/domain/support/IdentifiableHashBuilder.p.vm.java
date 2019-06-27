@@ -15,7 +15,7 @@
 $output.java($ModelSupport, "IdentifiableHashBuilder")##
 
 $output.require("java.io.Serializable")##
-$output.require("com.jaxio.jpa.querybyexample.Identifiable")##
+$output.require("${configuration.rootPackage}.jaxio.commons.Identifiable")##
 $output.require("org.slf4j.Logger")##
 
 /**

@@ -17,17 +17,20 @@ $output.skipIf($project.accountEntity.isVirtual())##
 $output.javaTest($RepositorySupport, "ByNamedQueryUtilIT")
 
 $output.require("javax.inject.Inject")##
-$output.require("com.jaxio.jpa.querybyexample.*")##
+$output.require("${configuration.rootPackage}.jaxio.commons.*")##
 $output.require("org.junit.Test")##
 $output.require("org.junit.runner.RunWith")##
-$output.require("org.springframework.test.context.ContextConfiguration")##
-$output.require("org.springframework.test.context.junit4.SpringJUnit4ClassRunner")##
-$output.require("org.springframework.transaction.annotation.Transactional")##
 $output.requireStatic("org.fest.assertions.Assertions.assertThat")##
+$output.require("org.springframework.boot.test.context.SpringBootTest")##
+$output.require("org.springframework.context.annotation.ComponentScan")##
+$output.require("org.springframework.test.annotation.Rollback")##
+$output.require("org.springframework.test.context.junit4.SpringRunner")##
+$output.require("org.springframework.transaction.annotation.Transactional")##
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:spring/applicationContext-test.xml" })
-@Transactional
+
+@SpringBootTest(classes=${output.currentClass}.class)
+@RunWith(SpringRunner.class)
+@ComponentScan(value = {"${configuration.rootPackage}"})
 public class $output.currentClass {
 
     @Inject

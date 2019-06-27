@@ -6,7 +6,7 @@ $output.spring("applicationContext.xml")##
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
-			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
@@ -16,7 +16,6 @@ $output.spring("applicationContext.xml")##
 	]]></description>
 
 	<!-- context -->
-    <context:component-scan base-package="com.jaxio.jpa.querybyexample"/>
 	<context:component-scan base-package="${Root.packageName}">
 		<!-- exclude web beans as they live in the web application context -->
 		<!-- Note: this regexp does not work if you try to escape the '.' -->

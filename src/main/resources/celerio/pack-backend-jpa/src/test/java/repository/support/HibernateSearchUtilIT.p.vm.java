@@ -20,7 +20,7 @@ $output.requireStatic("org.hibernate.search.jpa.Search.getFullTextEntityManager"
 $output.require("javax.inject.Inject")##
 $output.require("javax.persistence.EntityManager")##
 $output.require("javax.persistence.PersistenceContext")##
-$output.require("com.jaxio.jpa.querybyexample.*")##
+$output.require("${configuration.rootPackage}.jaxio.commons.*")##
 $output.require("org.junit.Before")##
 $output.require("org.junit.Test")##
 $output.require("org.junit.runner.RunWith")##

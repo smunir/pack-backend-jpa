@@ -22,7 +22,7 @@ $output.requireStatic($Service, "AuditEvent.Modification")##
 $output.require("java.util.List")##
 $output.require("javax.inject.Inject")##
 $output.require("org.hibernate.action.spi.AfterTransactionCompletionProcess")##
-$output.require("org.hibernate.engine.spi.SessionImplementor")##
+$output.require("org.hibernate.engine.spi.SharedSessionContractImplementor")##
 $output.require("org.hibernate.event.spi.AbstractEvent")##
 $output.require("org.hibernate.event.spi.PostDeleteEvent")##
 $output.require("org.hibernate.event.spi.PostDeleteEventListener")##
@@ -33,7 +33,7 @@ $output.require("org.hibernate.event.spi.PreUpdateEventListener")##
 $output.require("org.hibernate.persister.entity.EntityPersister")##
 $output.require($Service, "AuditLogService")##
 $output.require($Context, "UserContext")##
-$output.require("com.jaxio.jpa.querybyexample.Identifiable")##
+$output.require("${configuration.rootPackage}.jaxio.commons.Identifiable")##
 $output.require($project.auditLog.model)##
 $output.require($Service, "AuditEvent")##
 $output.require($Service, "AuditLogService")##
@@ -133,7 +133,7 @@ $output.require("$project.auditLog.auditLogAttributes.eventDate.fullType")##
     private void audit(AbstractEvent hibernateEvent, final ${project.auditLog.model.type} ${project.auditLog.model.var}) {
         hibernateEvent.getSession().getActionQueue().registerProcess(new AfterTransactionCompletionProcess() {
         	@Override
-            public void doAfterTransactionCompletion(boolean success, SessionImplementor session) {
+            public void doAfterTransactionCompletion(boolean success, SharedSessionContractImplementor sharedSessionContractImplementor) {
                 if (success) {
                     auditLogService.log(${project.auditLog.model.var});
                 }

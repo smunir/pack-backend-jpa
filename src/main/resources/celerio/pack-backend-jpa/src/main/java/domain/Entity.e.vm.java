@@ -47,7 +47,7 @@ $output.dynamicAnnotation("javax.persistence.MappedSuperclass")
 
 #if($entity.isRoot())
 $output.require("java.io.Serializable")##
-$output.require("com.jaxio.jpa.querybyexample.Identifiable")##
+$output.require("${configuration.rootPackage}.jaxio.commons.Identifiable")##
 public#if ($output.isAbstract()) abstract#{end} class ${output.currentClass}${entity.spaceAndExtendsStatement} implements Identifiable<$entity.primaryKey.type>${entity.commaAndImplementedInterfaces}, Serializable {
 #else
 $output.require($entity.parent.model)##
